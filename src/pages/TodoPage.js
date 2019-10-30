@@ -34,7 +34,6 @@ retrieveAsync= async () => {
   try {
         const value = await AsyncStorage.getItem('Todo');
         const parsedData=JSON.parse(value)
-        console.log(parsedData)
         this.setState({tasks:parsedData})
       }
       catch(error) {
