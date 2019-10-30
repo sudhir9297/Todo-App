@@ -127,7 +127,7 @@ render() {
       </View>
       <FlatList style={todo_list_container}
                 data={todos}
-                keyExtractor={item => item.key}
+                keyExtractor={item => item.key.toString()}
                 renderItem={({item})=>
                             <Item
                              TextValue={item.text}
