@@ -13,25 +13,23 @@ import SplashPage from './src/pages/SplashPage.js';
 import Todo from './src/pages/TodoPage.js';
 import Setting from './src/pages/setting.js';
 
-// <View style={styles.body1}>
-//   <Todo/>
-// </View>
-// <View style={styles.body1}>
-//   <HomePage/>
-// </View>
+
 class App extends React.Component {
   render(){
     return (
       <View  style={styles.body}>
-        <StatusBar backgroundColor="blue" barStyle="dark-content" />
+        <StatusBar barStyle='light-content' />
         <ScrollView  pagingEnabled={true} horizontal={true} scrollEventThrottle={10} >
+              <View style={styles.body1}>
+                <Todo/>
+              </View>
+              <View style={styles.body1}>
+                <HomePage/>
+              </View>
+              <View style={styles.body1}>
+                  <Setting/>
+              </View>
 
-        <View style={styles.body1}>
-          <HomePage/>
-        </View>
-            <View style={styles.body1}>
-              <Setting/>
-            </View>
         </ScrollView>
       </View>
 

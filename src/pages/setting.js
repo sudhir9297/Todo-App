@@ -26,10 +26,7 @@ export default class Setting extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>*Pro Tip</Text>
-        <Text style={styles.text}>*Contact Us</Text>
-        <Text style={styles.text}>*HelpUs</Text>
-
+        <Text style={styles.headline}>Setting</Text>
       </View>
     );
   }
@@ -38,11 +35,16 @@ export default class Setting extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    top:'5%',
     justifyContent: 'center',
-    alignItems: 'flex-start',
+    alignItems: 'center',
+
   },
-  text:{
-    color:'#ffffff',
-    fontSize:24,
-  }
+  headline:{
+    color: "#ffffff",
+    fontSize:30,
+    fontWeight:'bold',
+    marginHorizontal:20,
+    marginVertical:5,
+  },
 });

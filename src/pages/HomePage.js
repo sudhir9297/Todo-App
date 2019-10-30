@@ -4,7 +4,6 @@ import DateTimePicker from "react-native-modal-datetime-picker";
 
 import TimerText from '../Component/TimerText.js'
 
-
 class HomePage extends React.Component{
   constructor(props) {
       super(props);
@@ -74,8 +73,7 @@ class HomePage extends React.Component{
   };
 
 //Adding Data from Async storage
-addAsync= async ( date)=>{
-
+addAsync= async (date)=>{
     try {
       await AsyncStorage.setItem('date',JSON.stringify(date));
     }
@@ -147,15 +145,15 @@ addAsync= async ( date)=>{
 
   handleDatePicked = date => {
       this.hideDateTimePicker();  //hiding date Picker
-      this.setState({date:date})  // setting State
-      this.addAsync(date) // storing in async
+      this.setState({date:date});  // setting State
+      this.addAsync(date); //storing in async
     };
 
     render(){
         return(
             <View style={styles.home}>
                 <View style={styles.container1}>
-                      <Text style={styles.text1} onPress={this.showDateTimePicker}>Pro Tip! It is just A Number</Text>
+                      <Text style={styles.text1} onPress={this.showDateTimePicker}>Check Yours. Click Here!</Text>
                       <DateTimePicker
                         isVisible={this.state.isDateTimePickerVisible}
                         onConfirm={this.handleDatePicked}
@@ -182,9 +180,9 @@ const styles=StyleSheet.create({
       height:'95%',
     },
     container1:{
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        flex: 1,
     },
     container2:{
         justifyContent: 'center',
