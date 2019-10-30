@@ -52,7 +52,6 @@ class HomePage extends React.Component{
     }
 
   componentDidMount() {
-
         this.timer = setInterval(() => {
             this.getCurrentTime();
         }, 1000); // just to make it run every 1sec

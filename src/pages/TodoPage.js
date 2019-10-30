@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import {
   View,
@@ -10,6 +9,7 @@ import {
   KeyboardAvoidingView,
   Button
 } from 'react-native';
+
 import Input from '../Component/Input.js';
 import Item from '../Component/Item.js'
 
@@ -26,7 +26,6 @@ constructor(props){
 }
 
 componentDidMount() {
-//console.log(AsyncStorage.removeItem('Todo'))
 this.retrieveAsync()
 }
 
@@ -53,7 +52,7 @@ addAsync= async (Todo)=>{
       }
 }
 
-
+// to delete item from above array tasks[] and adding to Async Storage
 deleteTask = id => {
     this.setState(
       prevState => {
@@ -62,8 +61,9 @@ deleteTask = id => {
       },
       () => this.addAsync(this.state.tasks)
     );
-  };
+};
 
+//Updating the item to be completed or not
 updateTodo=(key)=>{
     this.setState({
       tasks:this.state.tasks.map(item=>{
@@ -79,9 +79,9 @@ updateTodo=(key)=>{
     },
     () => this.addAsync(this.state.tasks)
   )
-  }
+}
 
-
+//adding the item to async storage and above array in state
 addTask = () => {
     let notEmpty = this.state.text.trim().length > 0;
 
@@ -96,15 +96,17 @@ addTask = () => {
           };
         },
           () => this.addAsync(this.state.tasks)
-      );
-    }
-  };
-
-  updateTodoFilter=(text)=>{
-      this.setState({todoFilter:text})
+    );
   }
+};
+
+//filtering the value
+updateTodoFilter=(text)=>{
+    this.setState({todoFilter:text})
+}
 
 render() {
+  const {container,headline,buttonsContainer,todo_list_container,}=styles
    let todos=[];
 
    if(this.state.todoFilter=='All'){
@@ -116,24 +118,24 @@ render() {
    }
 
     return (
-
-      <View style={styles.container}>
-      <Text style={styles.headline}>{this.state.tasks.length>0?'ToDo List':'Add todo'}</Text>
-      <View style={styles.buttonsContainer}>
+      <View style={container}>
+      <Text style={headline}>{this.state.tasks.length>0?'ToDo List':'Add todo'}</Text>
+      <View style={buttonsContainer}>
           <Button title='All' color="#ffffff"  onPress={()=>this.updateTodoFilter('All')}/>
           <Button title='Active' color="#2196F3" onPress={()=>this.updateTodoFilter('Active')}/>
           <Button title='Completed' color="#f91890" onPress={()=>this.updateTodoFilter('Completed')}/>
       </View>
-      <FlatList style={styles.todo_list_container}
+      <FlatList style={todo_list_container}
                 data={todos}
-                renderItem={({item,index})=>
+                keyExtractor={item => item.key}
+                renderItem={({item})=>
                             <Item
                              TextValue={item.text}
                              isDone={item.done}
                              id={item.key}
                              deleteTask={this.deleteTask}
                              updateTodo={this.updateTodo}
-                            />
+                  />
                  }
               />
 
@@ -169,8 +171,8 @@ const styles = StyleSheet.create({
   buttonsContainer:{
     flexDirection: 'row'
   },
-   todo_list_container:{
-      width:Dimensions.get('window').width-20,
-      margin:10,
-    },
+  todo_list_container:{
+    width:Dimensions.get('window').width-20,
+    margin:10,
+  },
 });

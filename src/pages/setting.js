@@ -8,11 +8,8 @@ import {
   Alert,
   AsyncStorage,
 } from 'react-native';
-
-import Button from '../Component/Button.js'
-import Input from '../Component/Input.js'
-
 import DateTimePicker from "react-native-modal-datetime-picker";
+import Input from '../Component/Input.js'
 
 export default class Setting extends Component {
   constructor(props){

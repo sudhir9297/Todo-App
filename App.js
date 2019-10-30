@@ -29,7 +29,6 @@ class App extends React.Component {
               <View style={styles.body1}>
                   <Setting/>
               </View>
-
         </ScrollView>
       </View>
 

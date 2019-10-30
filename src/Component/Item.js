@@ -1,19 +1,20 @@
 import React from 'react'
-import { View, Text, StyleSheet, TouchableOpacity,Dimensions,TouchableWithoutFeedback,TouchableHighlight} from 'react-native'
+import { View, Text, StyleSheet,Dimensions,TouchableWithoutFeedback} from 'react-native'
 
-const { width } = Dimensions.get('window')
+var {height, width} = Dimensions.get('window');
 
 const Item = ({ TextValue,isDone,id,updateTodo,deleteTask}) => {
+  const {todoContainer,listItemCont,status_done,status,listItem,removeContainer,remove}=styles
     return (
-        <View style={styles.todoContainer}>
+        <View style={todoContainer}>
                     <TouchableWithoutFeedback onPress={()=>updateTodo(id)}>
-                        <View style={styles.listItemCont}>
-                            <View  style={isDone ? styles.status_done : styles.status}/>
-                            <Text style={styles.listItem}>{TextValue}</Text>
+                        <View style={listItemCont}>
+                            <View  style={isDone ?status_done :status}/>
+                            <Text style={listItem}>{TextValue}</Text>
                         </View>
                     </TouchableWithoutFeedback>
-                    <TouchableWithoutFeedback style={styles.removeContainer} onPress={()=>deleteTask(id)}>
-                        <Text style={styles.remove} >&times;</Text>
+                    <TouchableWithoutFeedback style={removeContainer} onPress={()=>deleteTask(id)}>
+                        <Text style={remove} >&times;</Text>
                     </TouchableWithoutFeedback>
         </View>
     )
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
   },
 
   listItemCont: {
-    width: Dimensions.get("window").width-120,
+    width: width-120,
     flexDirection:'row',
     justifyContent:'flex-start',
     alignItems:'center',
@@ -85,7 +86,6 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         borderColor: "#dddddd",
         width: "100%",
-
       },
 })
 
